@@ -98,5 +98,31 @@ function winner(val_obj)
     {
         return true;
     }
+    
+    //Match Drawn condition
+    var size = Object.keys(val_obj).length;
+    if(size == 9)
+    {
+        for (let key in val_obj)
+    {
+        if(val_obj[key]!="")
+        {
+            check=true;
+        }
+        else
+        {
+            check=false;
+        }
+    Object.keys(val_obj).forEach(k => delete val_obj[k]);           //deleting the object to avoid obj len meeting the if condition
+    }
+    if(check)
+    {
+        document.getElementById("win").innerHTML="Match Drawn"      
+        check = false;
+        
+    }
+    
+    }
+    
 
 }
