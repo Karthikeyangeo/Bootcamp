@@ -1,7 +1,8 @@
 var pl=["X","O"];
 var val_obj={};
-var bool=false;
+var bool=false, check = false;
 var flag=true;
+let  cell_val = ["a1","a2","a3","b1","b2","b3","c1","c2","c3"];
 
 function game(id){
     var player = playerassign();
@@ -10,10 +11,19 @@ function game(id){
     val_obj[id]=player;
     document.getElementById(id).disabled = true;
     let win_play = winner(val_obj);
+    
     if(win_play)
     {
+        var win=document.getElementById("win").innerHTML
         document.getElementById("win").innerHTML=player+"Won";
+        
+        for(let i=0;i<9;i++)
+        {            
+            document.getElementById(cell_val[i]).disabled = true;
+        }
+               
     }
+
     
 
 }
@@ -47,8 +57,8 @@ function value_assign()
    
 }
 
+//resetting the buttons
 function reset(){
-    var cell_val = ["a1","a2","a3","b1","b2","b3","c1","c2","c3"];
     for(let i=0;i<9;i++)
     {
         document.getElementById(cell_val[i]).innerHTML="";
@@ -90,6 +100,8 @@ function winner(val_obj)
         {
             bool = true;
             break;
+            
+            
         }
         
 
@@ -97,6 +109,7 @@ function winner(val_obj)
     if(bool)
     {
         return true;
+
     }
     
     //Match Drawn condition
@@ -124,5 +137,5 @@ function winner(val_obj)
     
     }
     
-
+        
 }
